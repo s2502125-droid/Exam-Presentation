@@ -103,7 +103,7 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-dark);
+            color: var(--dark-olive);
             font-weight: 600;
         }
 
@@ -479,13 +479,17 @@
             </p>
         </div>
         <div class="intro-image-block">
-            <img src="https://via.placeholder.com/250x250/f0f0f0?text=Portrait" alt="Bruno Mars Portrait">
+            <img src="img.jpg" alt="Bruno Mars Portrait">
         </div>
     </section>
 
     <section class="iconic-section">
         <div class="iconic-image-wrapper">
-            <img class="iconic-image" src="https://via.placeholder.com/380x500/e8e8e8?text=Full+Body+Red+Suit" alt="Bruno Mars Red Suit">
+            <img class="iconic-image" src="soundAlbum.png" alt="Bruno Mars Red Suit">
+            <audio class="iconic-audio" controls>
+                <source src="your-audio-file.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
         <div class="iconic-content">
             <h2>What Makes<br>24K Magic Iconic</h2>
