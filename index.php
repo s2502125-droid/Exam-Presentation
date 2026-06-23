@@ -16,6 +16,11 @@
             box-sizing: border-box;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
@@ -247,18 +252,20 @@
 
         /* --- Products Grid Section --- */
         .products-section {
-            max-width: 1100px;
+            max-width: 800px; /* Reduced width to make the single-column content look balanced */
             margin: 80px auto;
             padding: 0 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px; /* Even vertical spacing between items */
         }
 
         .product-card {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start; /* Forces content to stack tightly from top to bottom */
+            align-items: flex-start;     /* Keeps text aligned cleanly to the left */
+            text-align: left;
         }
 
         .product-image-container {
@@ -279,7 +286,8 @@
         .product-title {
             font-size: 1.4rem;
             color: var(--text-dark);
-            margin-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 8px; /* Dictates the tight, precise gap before the description */
             line-height: 1.4;
         }
 
@@ -290,18 +298,11 @@
         }
 
         /* Grid specific alignments to mimic the layout asymmetry */
-        .grid-left {
-            padding-right: 20px;
-        }
-
-        .grid-right {
-            padding-left: 20px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+        .grid-left, .grid-right {
+            padding: 0;
+            margin: 0 auto; /* Handles the default centering layout */
+            max-width: 500px; 
+            width: 100%;
         }
 
         /* --- Footer --- */
@@ -417,6 +418,39 @@
                 padding: 0;
             }
         }
+
+        .booking-toggle-btn {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid var(--gold);
+            padding: 10px 25px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .booking-toggle-btn:hover {
+            background-color: var(--gold);
+            color: #000;
+        }
+
+        .map-wrapper {
+            max-width: 300px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .footer-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -454,6 +488,9 @@
     </section>
 
     <section class="iconic-section">
+
+        <section id="about" class="iconic-section"></section>
+
         <div class="iconic-image-wrapper">
             <img class="iconic-image" src="sound.png" alt="Bruno Mars Red Suit">
             <audio class="iconic-audio" controls>
@@ -478,11 +515,13 @@
 </section>
 
     <section class="products-section">
+
+        <section id="shop" class="products-section"></section>
         
         <div class="product-card grid-left">
             <div>
                 <div class="product-image-container">
-                    <img src="https://via.placeholder.com/400x400/fcfcfc?text=Concert+T-Shirt" alt="24K Magic Tour T-Shirt">
+                    <img src="shirt.png" alt="24K Magic Tour T-Shirt">
                 </div>
                 <div class="product-price">$35</div>
                 <h3 class="product-title">24K Magic 2018 World Tour Black Graphic Concert Merch T-Shirt</h3>
@@ -490,17 +529,10 @@
             <p class="product-description">A bold, tour-exclusive design that captures the energy and luxury aesthetic of the 24K Magic live experience.</p>
         </div>
 
-        <div class="product-card grid-right" style="margin-top: 40px;">
+        <div class="product-card grid-right">
             <div>
                 <div class="product-image-container">
-                    <div class="gallery-grid">
-                        <img src="https://via.placeholder.com/150/f5f5f5?text=1" alt="Poster 1">
-                        <img src="https://via.placeholder.com/150/f5f5f5?text=2" alt="Poster 2">
-                        <img src="https://via.placeholder.com/150/f5f5f5?text=3" alt="Poster 3">
-                        <img src="https://via.placeholder.com/150/f5f5f5?text=4" alt="Poster 4">
-                        <img src="https://via.placeholder.com/150/f5f5f5?text=5" alt="Poster 5">
-                        <img src="https://via.placeholder.com/150/f5f5f5?text=6" alt="Poster 6">
-                    </div>
+                    <img src="poster.jpg" alt="Poster Set" style="width: 100%; height: auto;">
                 </div>
                 <div class="product-price">$20</div>
                 <h3 class="product-title">Poster Set</h3>
@@ -508,10 +540,10 @@
             <p class="product-description">A curated collection of high-quality prints that showcase the iconic visuals and style of the 24K Magic era.</p>
         </div>
 
-        <div class="product-card grid-left" style="grid-column: 1 / -1; max-width: 500px; margin: 40px auto 0 0;">
+        <div class="product-card grid-left" style="max-width: 500px; margin: 0 auto; width: 100%;">
             <div>
                 <div class="product-image-container">
-                    <img src="https://via.placeholder.com/500x250/fafafa?text=Vinyl+Deluxe+Edition" alt="Vinyl Deluxe Edition">
+                    <img src="vinyl.jpg" alt="Vinyl Deluxe Edition" style="width: 100%; height: auto;">
                 </div>
                 <div class="product-price">$59</div>
                 <h3 class="product-title">Vinyl Record (Deluxe Edition)</h3>
@@ -522,28 +554,78 @@
     </section>
 
     <footer>
-        <div class="footer-top">
-            <div class="footer-brand">
-                <h2>Bruno Mars</h2>
-                <p>Monday to Friday<br>Response within 24-48 hours</p>
-            </div>
-            <div class="footer-info">
-                <h3>For Bookings & Collaborations</h3>
-                <p>123 Main Street</p>
-                <p>(+123) 456-7890</p>
-                <p>support@brunomars.com</p>
+
+        <footer id="contact"></footer>
+
+    <div class="footer-top">
+        <div class="footer-brand">
+            <h2>Bruno Mars</h2>
+            <p>Monday to Friday<br>Response within 24-48 hours</p>
+            
+            <button class="booking-toggle-btn" onclick="toggleBookingForm()">Book Here</button>
+        </div>
+
+        <div id="booking-container" style="display: none; width: 100%; max-width: 400px; margin: 20px 0; text-align: left;">
+            <form action="" method="POST" class="booking-form">
+                <h3 style="margin-bottom: 10px; font-size: 0.9rem;">Request a Booking</h3>
+                <input type="text" name="client_name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff;">
+                <input type="email" name="client_email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff;">
+                <button type="submit" class="submit-btn" style="background: var(--gold); color: #fff; border: none; padding: 10px 20px; width: 100%; cursor: pointer; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">Submit Request</button>
+            </form>
+
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['client_name'])) {
+                $name = htmlspecialchars($_POST['client_name']);
+                $email = htmlspecialchars($_POST['client_email']);
+                
+                echo "<div id='thank-you-notif' style='margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-left: 3px solid var(--gold); font-size: 0.8rem; transition: opacity 0.5s ease;'>";
+                echo "Thank you, " . $name . "! A confirmation email has been sent to " . $email . ".";
+                echo "</div>";
+                echo "<script>
+                    setTimeout(function() {
+                        var notif = document.getElementById('thank-you-notif');
+                        if(notif) {
+                            notif.style.opacity = '0';
+                            setTimeout(function() { notif.style.display = 'none'; }, 500);
+                        }
+                    }, 4000); 
+                </script>";
+            }
+            ?>
+        </div>
+
+        <div class="footer-info">
+            <h3>For Bookings & Collaborations</h3>
+            <p>123 Main Street</p>
+            <p>(+123) 456-7890</p>
+            <p style="margin-bottom: 15px;">support@brunomars.com</p>
+            
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.95373531531615!3d-37.81627977975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2s!4v1611532432000!5m2!1sen!2s" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <div class="copyright">© Bruno Mars | Gorilla Management</div>
-            <div class="social-icons">
-                <a href="#" class="social-circle">Tw</a>
-                <a href="#" class="social-circle">Fb</a>
-                <a href="#" class="social-circle">Ig</a>
-            </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="copyright">© Bruno Mars | Gorilla Management</div>
+        <div class="social-icons">
+            <a href="#" class="social-circle">Tw</a>
+            <a href="#" class="social-circle">Fb</a>
+            <a href="#" class="social-circle">Ig</a>
         </div>
-    </footer>
+    </div>
+</footer>
+
+<script>
+function toggleBookingForm() {
+    var formContainer = document.getElementById("booking-container");
+    if (formContainer.style.display === "none") {
+        formContainer.style.display = "block";
+    } else {
+        formContainer.style.display = "none";
+    }
+}
+</script>
 
 </body>
 </html>
