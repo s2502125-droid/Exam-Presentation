@@ -566,7 +566,7 @@
         </div>
 
         <div id="booking-container" style="display: none; width: 100%; max-width: 400px; margin: 20px 0; text-align: left;">
-            <form action="" method="POST" class="booking-form">
+            <form action="submit.php" method="POST">
                 <h3 style="margin-bottom: 10px; font-size: 0.9rem;">Request a Booking</h3>
                 <input type="text" name="client_name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff;">
                 <input type="email" name="client_email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff;">
