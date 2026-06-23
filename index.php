@@ -167,9 +167,16 @@
         }
 
         .iconic-image-wrapper {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
+        flex: 1;
+        display: flex;
+        flex-direction: column; /* Forces the image and audio to stack vertically */
+        align-items: flex-end;   /* Keeps the alignment aligned to the right side of the split */
+        }
+
+        .iconic-audio {
+        width: 100%;
+        max-width: 380px;       /* Matches the exact max-width of your iconic-image */
+        margin-top: 15px;       /* Creates clean spacing directly under the image */
         }
 
         .iconic-image {
@@ -485,10 +492,9 @@
 
     <section class="iconic-section">
         <div class="iconic-image-wrapper">
-            <img class="iconic-image" src="soundAlbum.png" alt="Bruno Mars Red Suit">
+            <img class="iconic-image" src="sound.png" alt="Bruno Mars Red Suit">
             <audio class="iconic-audio" controls>
-                <source src="your-audio-file.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
+                <source src="sound.mp3" type="audio/mpeg">
             </audio>
         </div>
         <div class="iconic-content">
