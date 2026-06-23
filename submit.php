@@ -100,16 +100,21 @@
         <div class="icon">✨</div>
         
         <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['client_name'])) {
-            $name = htmlspecialchars($_POST['client_name']);
-            $email = htmlspecialchars($_POST['client_email']);
+        // Simple check: Did the user submit the form?
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
+            // Just grab the inputs directly from the POST array
+            $name = $_POST['client_name'];
+            $email = $_POST['client_email'];
+            
+            // Directly print them out
             echo "<h2>Booking Received</h2>";
-            echo "<p>Thank you, <strong>" . $name . "</strong>! Your request has been successfully locked in. A golden confirmation itinerary has been sent to <strong>" . $email . "</strong>.</p>";
+            echo "<p>Thank you, <strong>" . $name . "</strong>! Your request has been successfully locked in. A confirmation email has been sent to <strong>" . $email . "</strong>.</p>";
+        
         } else {
-            // Guard rail if someone tries to access submit.php directly without submitting the form
-            echo "<h2>Access Denied</h2>";
-            echo "<p>No data was submitted. Please return to the main page to make a booking.</p>";
+            // If someone just types the URL without submitting the form
+            echo "<h2>Error</h2>";
+            echo "<p>Please go back to the home page and submit the form first.</p>";
         }
         ?>
 
