@@ -167,16 +167,16 @@
         }
 
         .iconic-image-wrapper {
-        flex: 1;
-        display: flex;
-        flex-direction: column; /* Forces the image and audio to stack vertically */
-        align-items: flex-end;   /* Keeps the alignment aligned to the right side of the split */
+            flex: 1;
+            display: flex;
+            flex-direction: column; /* Forces the image and audio to stack vertically */
+            align-items: flex-end;   /* Keeps the alignment aligned to the right side of the split */
         }
 
         .iconic-audio {
-        width: 100%;
-        max-width: 380px;       /* Matches the exact max-width of your iconic-image */
-        margin-top: 15px;       /* Creates clean spacing directly under the image */
+            width: 100%;
+            max-width: 380px;       /* Matches the exact max-width of your iconic-image */
+            margin-top: 15px;       /* Creates clean spacing directly under the image */
         }
 
         .iconic-image {
@@ -229,57 +229,20 @@
         .iconic-list li:nth-child(3)::before { content: "03."; }
 
         /* --- Featured Banner --- */
-        .featured-banner {
-            position: relative;
+        .featured-video-container {
+            width: 100%;
             background-color: #0d0d0d;
-            color: #ffffff;
-            text-align: center;
-            padding: 140px 20px;
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://via.placeholder.com/1920x800/1a1a1a?text=Bruno+Mars+Live'); /* Replace with actual background image */
-            background-size: cover;
-            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
-        .featured-banner .tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
+        .featured-video {
+            width: 100%;
+            max-height: 600px; /* Adjust this height limit to fit your design choice */
+            object-fit: cover; /* Ensures the video crops cleanly without stretching */
             display: block;
-            color: var(--gold);
-        }
-
-        .featured-banner h2 {
-            font-size: 3rem;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-        }
-
-        .featured-banner p {
-            font-size: 0.85rem;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-            line-height: 1.8;
-        }
-
-        .banner-btn {
-            border: 1px solid #ffffff;
-            padding: 12px 40px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: transparent;
-            color: #ffffff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .banner-btn:hover {
-            background-color: #ffffff;
-            color: #000000;
         }
 
         /* --- Products Grid Section --- */
@@ -509,12 +472,10 @@
         </div>
     </section>
 
-    <section class="featured-banner">
-        <span class="tag">Featured</span>
-        <h2>24K Magic</h2>
-        <p>A bold, funk-driven anthem with smooth vocals and a confident, high-energy groove that defines the 24K Magic era.</p>
-        <button class="banner-btn">Buy Now</button>
-    </section>
+    <section class="featured-video-container">
+    <video class="featured-video" controls autoplay muted loop>
+        <source src="video.mp4" type="video/mp4">
+</section>
 
     <section class="products-section">
         
